@@ -17,12 +17,14 @@ add-zsh-hook chpwd chpwd_recent_dirs
 
 typeset -gU cdpath fpath mailpath path
 path=(
-	$HOME/n/bin
-        $HOME/.yarn/bin
-	$HOME/.config/yarn/global/node_modules/.bin
-        /usr/local/{bin,sbin}
-        /usr/local/bo/bin
-        $path
+  $HOME/bin
+  $HOME/n/bin
+  $HOME/.yarn/bin
+  $HOME/.config/yarn/global/node_modules/.bin
+  /usr/local/{bin,sbin}
+  /usr/local/bo/bin
+  $HOME/.cargo/bin
+  $path
 )
 
 zstyle ":anyframe:selector:" use fzf
