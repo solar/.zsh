@@ -6,6 +6,7 @@ zplug "zsh-users/zsh-history-substring-search"
 zplug "mafredri/zsh-async", from:github
 
 zplug "sorin-ionescu/prezto"
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug "modules/environment", from:prezto
 zplug "modules/terminal", from:prezto
 zplug "modules/editor", from:prezto
