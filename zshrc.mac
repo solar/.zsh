@@ -1,0 +1,70 @@
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug "zsh-users/zsh-history-substring-search"
+
+zplug "mafredri/zsh-async", from:github
+
+zplug "sorin-ionescu/prezto"
+zplug "modules/environment", from:prezto
+zplug "modules/terminal", from:prezto
+zplug "modules/editor", from:prezto
+zplug "modules/history", from:prezto
+zplug "modules/directory", from:prezto
+zplug "modules/spectrum", from:prezto
+zplug "modules/utility", from:prezto
+zplug "modules/completion", from:prezto
+zplug "modules/prompt", from:prezto
+
+zplug "modules/git", from:prezto
+
+zplug "mollifier/anyframe"
+
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+# Can manage local plugins
+zplug "~/.zsh", from:local
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check ; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load
+
+bindkey -s '^ks' 's-peco ssh^M'
+
+eval "$(direnv hook zsh)"
+fpath=($fpath "/Users/okamura_shimpei/.zfunctions")
+
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+
+source ~/.zsh/files/spaceship.zsh
+
+source $HOME/.fzf.zsh
+
+export PATH="$PATH:/Users/okamura_shimpei/Library/Application Support/Coursier/bin"
+export DOCKER_HOST=unix:///Users/okamura_shimpei/.colima/docker.sock
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+export PATH="$N_PREFIX/bin:$PATH"
+
+alias ls='lsd'
+alias la='lsd -a'
+alias ll='lsd -l'
+alias lla='lsd -la'
+alias lt='lsd --tree'
+
+alias cat="bat"
+
+if which plenv > /dev/null; then eval "$(plenv init - zsh)"; fi
+
+source ~/.zsh/files/pyenv.zsh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+source ~/.zsh/files/sdkman.zsh
