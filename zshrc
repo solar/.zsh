@@ -3,7 +3,7 @@ source $ZPLUG_HOME/init.zsh
 
 zplug "zsh-users/zsh-history-substring-search"
 
-zplug "mafredri/zsh-async", from:github
+zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
 
 zplug "sorin-ionescu/prezto"
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme

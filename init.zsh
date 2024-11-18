@@ -7,6 +7,7 @@ setopt hist_find_no_dups hist_ignore_space no_hist_beep no_beep
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
+HISTTIMEFORMAT="%d/%m/%y %T "
 
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -21,8 +22,8 @@ path=(
   $HOME/.yarn/bin
   $HOME/.config/yarn/global/node_modules/.bin
   /usr/local/{bin,sbin}
-  /usr/local/go/bin
   $HOME/.cargo/bin
+  $HOME/go/bin
   $path
 )
 
